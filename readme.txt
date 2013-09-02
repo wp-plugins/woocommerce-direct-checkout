@@ -6,8 +6,8 @@ Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
 Tested up to: 3.5.2
-Stable tag: 1.0.0
-Version: 1.0.0
+Stable tag: 1.0.1
+Version: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 
 *   Enabled / Disabled the direct checkout option
 *   Change "Add to cart" to any text
+*   Update "Redirect to Page" option
 
 = Features =
 
@@ -50,6 +51,11 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Add 'Redirect to Page' option, let user choose redirecting to any page after add to cart pressed
+* Updated wrong hyperlink
 
 = 1.0.0 =
 
