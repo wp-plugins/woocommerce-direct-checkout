@@ -6,8 +6,8 @@ Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
 Tested up to: 3.5.2
-Stable tag: 1.0.1
-Version: 1.0.1
+Stable tag: 1.0.2
+Version: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,11 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Update 'Redirect to Page' option
+* Updated table style for Firefox display bugs
 
 = 1.0.1 =
 

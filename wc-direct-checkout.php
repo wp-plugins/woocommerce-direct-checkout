@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce Direct Checkout
 Plugin URI: http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Description: Allow you to implement direct checkout (skip cart page) for WooCommerce
-Version: 1.0.1
+Version: 1.0.2
 Author: Terry Tsang
 Author URI: http://shop.terrytsang.com
 */
@@ -29,7 +29,7 @@ Author URI: http://shop.terrytsang.com
 define('wc_plugin_name_direct_checkout', 'WooCommerce Direct Checkout');
 
 // Define plugin version
-define('wc_version_direct_checkout', '1.0.0');
+define('wc_version_direct_checkout', '1.0.2');
 
 
 // Checks if the WooCommerce plugins is installed and active.
@@ -58,7 +58,8 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 				
 				$this->options_direct_checkout = array(
 					'direct_checkout_enabled' => '',
-					'direct_checkout_cart_button_text' => ''
+					'direct_checkout_cart_button_text' => '',
+					'direct_checkout_cart_redirect_url' => ''
 				);
 	
 				$this->saved_options_direct_checkout = array();
@@ -90,8 +91,12 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 			 * Set custom add to cart redirect
 			 */
 			function custom_add_to_cart_redirect() {
+				$direct_checkout_cart_redirect_url	= get_option( 'direct_checkout_cart_redirect_url' );
 				
-				return get_permalink(get_option('woocommerce_checkout_page_id')); // Replace with the url of your choosing
+				if($direct_checkout_cart_redirect_url != "")
+					return $direct_checkout_cart_redirect_url; // Replace with the url of your choosing
+				else 
+					return get_permalink(get_option('woocommerce_checkout_page_id'));
 			}
 			
 			/**
@@ -128,6 +133,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 	
 					$this->saved_options_direct_checkout['direct_checkout_enabled'] = ! isset( $_POST['direct_checkout_enabled'] ) ? '1' : $_POST['direct_checkout_enabled'];
 					$this->saved_options_direct_checkout['direct_checkout_cart_button_text'] = ! isset( $_POST['direct_checkout_cart_button_text'] ) ? 'Add to cart' : $_POST['direct_checkout_cart_button_text'];
+					$this->saved_options_direct_checkout['direct_checkout_cart_redirect_url'] = ! isset( $_POST['direct_checkout_cart_redirect_url'] ) ? '' : $_POST['direct_checkout_cart_redirect_url'];
 						
 					foreach($this->options_direct_checkout as $field => $value)
 					{
@@ -142,13 +148,13 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 				}
 			
 				$direct_checkout_enabled			= get_option( 'direct_checkout_enabled' );
-				$direct_checkout_cart_button_text	= get_option( 'direct_checkout_cart_button_text' );
+				$direct_checkout_cart_button_text	= get_option( 'direct_checkout_cart_button_text' ) ? get_option( 'direct_checkout_cart_button_text' ) : 'Add to Cart';
+				$direct_checkout_cart_redirect_url	= get_option( 'direct_checkout_cart_redirect_url' );
 				
-				$checked = '';
+				$checked_enabled = '';
 			
 				if($direct_checkout_enabled)
-					$checked = 'checked="checked"';
-
+					$checked_enabled = 'checked="checked"';
 			
 				$actionurl = $_SERVER['REQUEST_URI'];
 				$nonce = wp_create_nonce( $this->textdomain );
@@ -161,12 +167,12 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 				<h3><?php _e( 'Direct Checkout Options', $this->textdomain); ?></h3>
 				
 				
-				<table width="90%" cellspacing="2">
+				<table style="width:90%;padding:5px;border-collapse:separate;border-spacing:5px;vertical-align:top;">
 				<tr>
 					<td colspan="2">Checking out is the most important and key part of placing an order online, and many users end up abandoning their order at the end. This plugin will simplify the checkout process, leading to an immediate increase in sales.</td>
 				</tr>
 				<tr>
-					<td width="70%" valign="top">
+					<td style="width:70%;vertical-align:top;">
 						<form action="<?php echo $actionurl; ?>" method="post">
 						<table>
 								<tbody>
@@ -177,13 +183,33 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 													<td width="25%"><?php _e( 'Enable', $this->textdomain ); ?></td>
 													<td>
 														<input class="checkbox" name="direct_checkout_enabled" id="direct_checkout_enabled" value="0" type="hidden">
-														<input class="checkbox" name="direct_checkout_enabled" id="direct_checkout_enabled" value="1" type="checkbox" <?php echo $checked; ?> type="checkbox">
+														<input class="checkbox" name="direct_checkout_enabled" id="direct_checkout_enabled" value="1" type="checkbox" <?php echo $checked_enabled; ?> type="checkbox">
 													</td>
 												</tr>
 												<tr>
 													<td width="25%"><?php _e( 'Custom Add to Cart Text', $this->textdomain ); ?></td>
 													<td>
 														<input name="direct_checkout_cart_button_text" id="direct_checkout_cart_button_text" value="<?php echo $direct_checkout_cart_button_text; ?>" />
+													</td>
+												</tr>
+												<tr>
+													<td width="25%"><?php _e( 'Redirect to Page', $this->textdomain ); ?><br /><span style="color:#ccc;"><?php _e( '(Default will be checkout page if not set)', $this->textdomain ); ?></span></td>
+													<td>
+														<select name="direct_checkout_cart_redirect_url">
+														<option value=""><?php echo esc_attr( __( 'Select page' ) ); ?></option> 
+														 <?php 
+														  $pages = get_pages(); 
+														  foreach ( $pages as $page ) {
+															if($direct_checkout_cart_redirect_url == get_permalink( $page->ID ))
+														  		$option = '<option value="' . get_permalink( $page->ID ) . '" selected="selected">';
+															else 
+																$option = '<option value="' . get_permalink( $page->ID ) . '">';
+															$option .= $page->post_title;
+															$option .= '</option>';
+															echo $option;
+														  }
+														 ?>
+														</select>
 													</td>
 												</tr>
 											</table>
@@ -213,10 +239,10 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 
 						<ul style="list-style:dash">If you find this plugin helpful, you can:	
 							<li>- Write and review about it in your blog</li>
-							<li>- Rate it on <a href="http://wordpress.org/extend/plugins/woocommerce-facebook-share-like-button/" target="_blank">wordpress plugin page</a></li>
+							<li>- Rate it on <a href="http://wordpress.org/extend/plugins/woocommerce-direct-checkout/" target="_blank">wordpress plugin page</a></li>
 							<li>- Share on your social media<br />
 							<a href="http://www.facebook.com/sharer.php?u=http://terrytsang.com/shop/shop/woocommerce-direct-checkout/&amp;t=WooCommerce Direct Checkout" title="Share this WooCommerce Direct Checkout on Facebook" target="_blank"><img src="http://terrytsang.com/shop/images/social_facebook.png" alt="Share this WooCommerce Direct Checkout plugin on Facebook"></a> 
-							<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fterrytsang.com%2Fshop%2Fshop%2Fwoocommerce-facebook-share-like-button%2F&text=WooCommerce Direct Checkout - &via=terrytsang811" target="_blank"><img src="http://terrytsang.com/shop/images/social_twitter.png" alt="Tweet about WooCommerce Direct Checkout plugin"></a>
+							<a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fterrytsang.com%2Fshop%2Fshop%2Fwoocommerce-direct-checkout%2F&text=WooCommerce Direct Checkout - &via=terrytsang811" target="_blank"><img src="http://terrytsang.com/shop/images/social_twitter.png" alt="Tweet about WooCommerce Direct Checkout plugin"></a>
 							<a href="http://linkedin.com/shareArticle?mini=true&amp;url=http://terrytsang.com/shop/shop/woocommerce-direct-checkout/&amp;title=WooCommerce Direct Checkout plugin" title="Share this WooCommerce Direct Checkout plugin on LinkedIn" target="_blank"><img src="http://terrytsang.com/shop/images/social_linkedin.png" alt="Share this WooCommerce Direct Checkout plugin on LinkedIn"></a>
 							</li>
 							<li>- Or make a donation</li>
