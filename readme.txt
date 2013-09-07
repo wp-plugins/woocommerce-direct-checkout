@@ -11,7 +11,7 @@ Version: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-You can skip shopping cart page and implement add to cart button redirect to checkout page. This can lead to an immediate increase in sales. 
+You can skip shopping cart page and implement add to cart button redirect to checkout page or you can redirect to other existing page. This can lead to an immediate increase in sales. 
 
 == Description ==
 
@@ -21,7 +21,7 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 
 *   Enabled / Disabled the direct checkout option
 *   Change "Add to cart" to any text
-*   Update "Redirect to Page" option
+*   Update "Redirect to Page" option (NEW)
 
 = Features =
 
