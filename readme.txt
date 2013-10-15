@@ -6,8 +6,8 @@ Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
 Tested up to: 3.5.2
-Stable tag: 1.0.2
-Version: 1.0.2
+Stable tag: 1.0.3
+Version: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,8 +29,8 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 *   2 languages available : English UK (en_GB) and Chinese (zh_CN)
 
 = IMPORTANT NOTES =
-*   This plugin requires the WooCommerce Extension.
 *   Do use POEdit and open 'wc-direct-checkout.pot' file and save the file as wc-direct-checkout-[language code].po, then put that into languages folder for this plugin.
+*   Please uncheck the option "Enable AJAX add to cart buttons on archives" at WooCommerce > Settings > Catalog to make the rediection working without ajax.
 
 = Additional Plugins by Terry Tsang =
 *   [Custom Checkout Options] (http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/)
@@ -51,6 +51,11 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.3 =
+
+* Updated reademe file for instruction and notes
+
 
 = 1.0.2 =
 
