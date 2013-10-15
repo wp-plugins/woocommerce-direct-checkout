@@ -29,7 +29,7 @@ Author URI: http://shop.terrytsang.com
 define('wc_plugin_name_direct_checkout', 'WooCommerce Direct Checkout');
 
 // Define plugin version
-define('wc_version_direct_checkout', '1.0.2');
+define('wc_version_direct_checkout', '1.0.3');
 
 
 // Checks if the WooCommerce plugins is installed and active.
