@@ -5,9 +5,9 @@ Plugin Name: WooCommerce Custom Direct Checkout
 Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
-Tested up to: 3.5.2
-Stable tag: 1.0.3
-Version: 1.0.3
+Tested up to: 3.8.1
+Stable tag: 1.0.4
+Version: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 = Additional Plugins by Terry Tsang =
 *   [Custom Checkout Options] (http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/)
 *   [Social Buttons PRO] (http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/)
+*   [Extra Fee Options PRO] (http://terrytsang.com/shop/shop/woocommerce-extra-fee-option-pro/)
 
 
 == Installation ==
@@ -51,6 +52,10 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.4 =
+
+* Added pro version link 
 
 = 1.0.3 =
 
