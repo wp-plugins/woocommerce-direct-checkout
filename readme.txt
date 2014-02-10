@@ -32,6 +32,10 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 *   Do use POEdit and open 'wc-direct-checkout.pot' file and save the file as wc-direct-checkout-[language code].po, then put that into languages folder for this plugin.
 *   Please uncheck the option "Enable AJAX add to cart buttons on archives" at WooCommerce > Settings > Catalog to make the rediection working without ajax.
 
+= GET PRO VERSION =
+http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/
+
+
 = Additional Plugins by Terry Tsang =
 *   [Custom Checkout Options] (http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/)
 *   [Social Buttons PRO] (http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/)
