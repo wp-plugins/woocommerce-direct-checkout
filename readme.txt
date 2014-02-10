@@ -11,7 +11,7 @@ Version: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-You can skip shopping cart page and implement add to cart button redirect to checkout page or you can redirect to other existing page. This can lead to an immediate increase in sales. 
+You can skip shopping cart page and implement add to cart button redirect to checkout page or you can redirect to other existing page.
 
 == Description ==
 
