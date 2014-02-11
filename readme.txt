@@ -35,7 +35,6 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 = GET PRO VERSION =
 http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/
 
-
 = Additional Plugins by Terry Tsang =
 *   [Custom Checkout Options] (http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/)
 *   [Social Buttons PRO] (http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/)
