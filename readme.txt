@@ -6,8 +6,8 @@ Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable tag: 1.0.4
-Version: 1.0.4
+Stable tag: 1.0.5
+Version: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,11 @@ http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.5 =
+
+* Updated "Add to cart" filter with WooCommere v2.1.x
+* Fixed table width problem for option settings page
 
 = 1.0.4 =
 

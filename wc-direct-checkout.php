@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce Direct Checkout
 Plugin URI: http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Description: Allow you to implement direct checkout (skip cart page) for WooCommerce
-Version: 1.0.4
+Version: 1.0.5
 Author: Terry Tsang
 Author URI: http://shop.terrytsang.com
 */
@@ -29,7 +29,7 @@ Author URI: http://shop.terrytsang.com
 define('wc_plugin_name_direct_checkout', 'WooCommerce Direct Checkout');
 
 // Define plugin version
-define('wc_version_direct_checkout', '1.0.4');
+define('wc_version_direct_checkout', '1.0.5');
 
 
 // Checks if the WooCommerce plugins is installed and active.
@@ -84,6 +84,9 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					add_filter('add_to_cart_redirect', array( &$this, 'custom_add_to_cart_redirect') );
 					add_filter('single_add_to_cart_text', array( &$this, 'custom_cart_button_text') );
 					add_filter('add_to_cart_text', array( &$this, 'custom_cart_button_text') );
+					
+					add_filter('woocommerce_product_single_add_to_cart_text', array( &$this, 'custom_cart_button_text') );
+					add_filter('woocommerce_product_add_to_cart_text', array( &$this, 'custom_cart_button_text') );
 				}
 			}
 			
@@ -172,7 +175,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					<td colspan="2">Checking out is the most important and key part of placing an order online, and many users end up abandoning their order at the end. This plugin will simplify the checkout process, leading to an immediate increase in sales.</td>
 				</tr>
 				<tr>
-					<td style="width:70%;vertical-align:top;">
+					<td width="70%" style="vertical-align:top;">
 						<form action="<?php echo $actionurl; ?>" method="post">
 						<table>
 								<tbody>
@@ -229,6 +232,21 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					</td>
 					
 					<td width="30%" style="background:#ececec;padding:10px 5px;" valign="top">
+						<div style="float:left;width:200px;">
+							<a href="https://twitter.com/terrytsang811" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @terrytsang811</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</div>
+						<div>
+							<div id="fb-root"></div>
+							<script>(function(d, s, id) {
+							  var js, fjs = d.getElementsByTagName(s)[0];
+							  if (d.getElementById(id)) return;
+							  js = d.createElement(s); js.id = id;
+							  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=354404357988395";
+							  fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));</script>
+							<div class="fb-like" data-href="http://wordpress.org/plugins/woocommerce-direct-checkout/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+						</div>
 						<p><b>WooCommerce Direct Checkout</b> is a FREE woocommerce plugin developed by <a href="http://shop.terrytsang.com" target="_blank" title="Terry Tsang - a PHP Developer and Wordpress Consultant">Terry Tsang</a>. This plugin aims to add direct checkout for WooCommerce.</p>
 						
 						<?php
