@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce Direct Checkout
 Plugin URI: http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Description: Allow you to implement direct checkout (skip cart page) for WooCommerce
-Version: 1.0.5
+Version: 1.0.6
 Author: Terry Tsang
 Author URI: http://shop.terrytsang.com
 */
@@ -59,6 +59,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 				$this->options_direct_checkout = array(
 					'direct_checkout_enabled' => '',
 					'direct_checkout_cart_button_text' => '',
+					'direct_checkout_exclude_external' => '',
 					'direct_checkout_cart_redirect_url' => ''
 				);
 	
@@ -106,10 +107,30 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 			 * Set custom add to cart text
 			 */
 			function custom_cart_button_text() {
-				$direct_checkout_cart_button_text = get_option( 'direct_checkout_cart_button_text' ) ? get_option( 'direct_checkout_cart_button_text' )  : "Add to cart";
+				global $post;
 				
-				if($direct_checkout_cart_button_text && $direct_checkout_cart_button_text != "")
-					return __($direct_checkout_cart_button_text, $this->textdomain);
+				
+				
+				$direct_checkout_cart_button_text = get_option( 'direct_checkout_cart_button_text' ) ? get_option( 'direct_checkout_cart_button_text' )  : "Add to cart";
+				$direct_checkout_exclude_external = get_option( 'direct_checkout_exclude_external' );
+				
+				if($direct_checkout_exclude_external){
+					
+					if( function_exists('get_product') ){
+						$product = get_product( $post->ID );
+							
+						if( !$product->is_type( 'external' ) && $direct_checkout_cart_button_text && $direct_checkout_cart_button_text != ""){
+							return __($direct_checkout_cart_button_text, $this->textdomain);
+						} else {
+							$button_text = get_post_meta( $post->ID, '_button_text', true ) ? get_post_meta( $post->ID, '_button_text', true ) : 'Buy product';
+							return __($button_text, $this->textdomain);
+						}
+					}
+					
+				} else {
+					if($direct_checkout_cart_button_text && $direct_checkout_cart_button_text != "")
+						return __($direct_checkout_cart_button_text, $this->textdomain);
+				}
 			
 			}
 			
@@ -136,6 +157,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 	
 					$this->saved_options_direct_checkout['direct_checkout_enabled'] = ! isset( $_POST['direct_checkout_enabled'] ) ? '1' : $_POST['direct_checkout_enabled'];
 					$this->saved_options_direct_checkout['direct_checkout_cart_button_text'] = ! isset( $_POST['direct_checkout_cart_button_text'] ) ? 'Add to cart' : $_POST['direct_checkout_cart_button_text'];
+					$this->saved_options_direct_checkout['direct_checkout_exclude_external'] = ! isset( $_POST['direct_checkout_exclude_external'] ) ? '1' : $_POST['direct_checkout_exclude_external'];
 					$this->saved_options_direct_checkout['direct_checkout_cart_redirect_url'] = ! isset( $_POST['direct_checkout_cart_redirect_url'] ) ? '' : $_POST['direct_checkout_cart_redirect_url'];
 						
 					foreach($this->options_direct_checkout as $field => $value)
@@ -152,12 +174,16 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 			
 				$direct_checkout_enabled			= get_option( 'direct_checkout_enabled' );
 				$direct_checkout_cart_button_text	= get_option( 'direct_checkout_cart_button_text' ) ? get_option( 'direct_checkout_cart_button_text' ) : 'Add to Cart';
+				$direct_checkout_exclude_external	= get_option( 'direct_checkout_exclude_external' );
 				$direct_checkout_cart_redirect_url	= get_option( 'direct_checkout_cart_redirect_url' );
 				
 				$checked_enabled = '';
 			
 				if($direct_checkout_enabled)
 					$checked_enabled = 'checked="checked"';
+				
+				if($direct_checkout_exclude_external)
+					$checked_enabled_exclude = 'checked="checked"';
 			
 				$actionurl = $_SERVER['REQUEST_URI'];
 				$nonce = wp_create_nonce( $this->textdomain );
@@ -193,6 +219,8 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 													<td width="25%"><?php _e( 'Custom Add to Cart Text', $this->textdomain ); ?></td>
 													<td>
 														<input name="direct_checkout_cart_button_text" id="direct_checkout_cart_button_text" value="<?php echo $direct_checkout_cart_button_text; ?>" />
+														<input class="checkbox" name="direct_checkout_exclude_external" id="direct_checkout_exclude_external" value="0" type="hidden">
+														<input class="checkbox" name="direct_checkout_exclude_external" id="direct_checkout_exclude_external" value="1" type="checkbox" <?php echo $checked_enabled_exclude; ?> type="checkbox">&nbsp;<i>Exclude External Product</i>
 													</td>
 												</tr>
 												<tr>
@@ -252,7 +280,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 						<?php
 							$get_pro_image = WooCommerce_Direct_Checkout::$plugin_url . '/images/direct-checkout-pro-version.png';
 						?>
-						<div align="center"><a href="http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/" target="_blank" title="WooCommerce Direct Checkout PRO"><img src="<?php echo $get_pro_image; ?>" border="0" /></a></div>
+						<div align="center"><a href="http://wordpress.org/plugins/woocommerce-direct-checkout/" target="_blank" title="WooCommerce Direct Checkout"><img src="<?php echo $get_pro_image; ?>" border="0" /></a></div>
 						
 						<h3>Get More Plugins</h3>
 					
