@@ -5,9 +5,9 @@ Plugin Name: WooCommerce Custom Direct Checkout
 Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
-Tested up to: 3.8.2
-Stable tag: 1.0.6
-Version: 1.0.6
+Tested up to: 3.9.1
+Stable tag: 1.0.7
+Version: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,10 @@ http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.7 =
+
+* Updated PRO version download link
 
 = 1.0.6 =
 
