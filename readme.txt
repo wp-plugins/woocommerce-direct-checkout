@@ -20,7 +20,7 @@ A WooCommerce plugin that aims to simplify the checkout process, leading to an i
 In WooCommerce Settings Panel, there will be a new submenu link called 'Direct Checkout' where you can:
 
 *   Enabled / Disabled the direct checkout option
-*   Add "Buy Now" button to simple product page
+*   Add "Continue Shoppinf" button to product page
 *   Change "Add to cart" to any text (Option to exclude external product)
 *   Update "Redirect to Page" option
 
