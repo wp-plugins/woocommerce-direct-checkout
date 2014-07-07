@@ -6,8 +6,8 @@ Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.0.7
-Version: 1.0.7
+Stable tag: 1.0.8
+Version: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,7 @@ A WooCommerce plugin that aims to simplify the checkout process, leading to an i
 In WooCommerce Settings Panel, there will be a new submenu link called 'Direct Checkout' where you can:
 
 *   Enabled / Disabled the direct checkout option
+*   Add "Buy Now" button to simple product page
 *   Change "Add to cart" to any text (Option to exclude external product)
 *   Update "Redirect to Page" option
 
@@ -55,6 +56,11 @@ http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/
 3. [screenhot-3.png] Screenshot Frontend WooCommerce - Product page
 
 == Changelog ==
+
+= 1.0.8 =
+
+* Add Continue Shopping button at product page
+* Fixed missing variable warning
 
 = 1.0.7 =
 

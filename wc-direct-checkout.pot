@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Direct Checkout v1.0.0\n"
+"Project-Id-Version: WooCommerce Direct Checkout v1.0.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-10 15:54:14+0000\n"
+"PO-Revision-Date: 2014-07-07 17:40:21+0000\n"
 "Last-Translator: admin <terrytsang811@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,33 +19,58 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: wc-direct-checkout.php:113
+#: wc-direct-checkout.php:173
 #@ wc-direct-checkout
 msgid "Direct Checkout"
 msgstr ""
 
-#: wc-direct-checkout.php:141
+#: wc-direct-checkout.php:204
 #@ wc-direct-checkout
 msgid "You have saved WooCommerce Direct Checkout options."
 msgstr ""
 
-#: wc-direct-checkout.php:161
+#: wc-direct-checkout.php:234
 #@ wc-direct-checkout
 msgid "Direct Checkout Options"
 msgstr ""
 
-#: wc-direct-checkout.php:177
+#: wc-direct-checkout.php:250
 #@ wc-direct-checkout
 msgid "Enable"
 msgstr ""
 
-#: wc-direct-checkout.php:184
+#: wc-direct-checkout.php:264
 #@ wc-direct-checkout
 msgid "Custom Add to Cart Text"
 msgstr ""
 
-#: wc-direct-checkout.php:194
+#: wc-direct-checkout.php:296
 #@ wc-direct-checkout
 msgid "Save Options"
+msgstr ""
+
+#: wc-direct-checkout.php:125
+#@ wc-direct-checkout
+msgid "Continue Shopping"
+msgstr ""
+
+#: wc-direct-checkout.php:257
+#@ wc-direct-checkout
+msgid "Add Continue Shopping Button"
+msgstr ""
+
+#: wc-direct-checkout.php:272
+#@ wc-direct-checkout
+msgid "Redirect to Page"
+msgstr ""
+
+#: wc-direct-checkout.php:272
+#@ wc-direct-checkout
+msgid "(Default will be checkout page if not set)"
+msgstr ""
+
+#: wc-direct-checkout.php:275
+#@ default
+msgid "Select page"
 msgstr ""
 

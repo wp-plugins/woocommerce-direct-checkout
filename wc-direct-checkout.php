@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce Direct Checkout
 Plugin URI: http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Description: Allow you to implement direct checkout (skip cart page) for WooCommerce
-Version: 1.0.7
+Version: 1.0.8
 Author: Terry Tsang
 Author URI: http://shop.terrytsang.com
 */
@@ -29,7 +29,7 @@ Author URI: http://shop.terrytsang.com
 define('wc_plugin_name_direct_checkout', 'WooCommerce Direct Checkout');
 
 // Define plugin version
-define('wc_version_direct_checkout', '1.0.7');
+define('wc_version_direct_checkout', '1.0.8');
 
 
 // Checks if the WooCommerce plugins is installed and active.
@@ -60,7 +60,8 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					'direct_checkout_enabled' => '',
 					'direct_checkout_cart_button_text' => '',
 					'direct_checkout_exclude_external' => '',
-					'direct_checkout_cart_redirect_url' => ''
+					'direct_checkout_cart_redirect_url' => '',
+					'direct_checkout_continue_enabled' => ''
 				);
 	
 				$this->saved_options_direct_checkout = array();
@@ -82,12 +83,17 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					update_option('woocommerce_cart_redirect_after_add', 'no');
 					update_option('woocommerce_enable_ajax_add_to_cart', 'no');
 					
-					add_filter('add_to_cart_redirect', array( &$this, 'custom_add_to_cart_redirect') );
 					add_filter('single_add_to_cart_text', array( &$this, 'custom_cart_button_text') );
 					add_filter('add_to_cart_text', array( &$this, 'custom_cart_button_text') );
 					
 					add_filter('woocommerce_product_single_add_to_cart_text', array( &$this, 'custom_cart_button_text') );
 					add_filter('woocommerce_product_add_to_cart_text', array( &$this, 'custom_cart_button_text') );
+
+					add_filter('add_to_cart_redirect', array( &$this, 'custom_add_to_cart_redirect') );
+
+					if(get_option('direct_checkout_continue_enabled'))
+						add_action( 'woocommerce_after_add_to_cart_button', array( &$this, 'direct_checkout_continue_button') );
+						
 				}
 			}
 			
@@ -101,6 +107,31 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					return $direct_checkout_cart_redirect_url; // Replace with the url of your choosing
 				else 
 					return get_permalink(get_option('woocommerce_checkout_page_id'));
+			}
+
+			/**
+			 * Set continue shopping button for single product
+			 */
+			function direct_checkout_continue_button() {
+				global $woocommerce, $post, $product;
+				global $wp_query;
+
+				$postID = $wp_query->post->ID;
+				
+				$direct_checkout_continue_enabled = get_option( 'direct_checkout_continue_enabled' );
+				$single_product_title = strip_tags($post->post_title);
+	
+				if($direct_checkout_continue_enabled == "1"){
+					$additional_button_text = __( 'Continue Shopping', $this->textdomain );
+					$additional_button_url = get_permalink(get_option('woocommerce_shop_page_id'));
+				} 
+
+				$target_blank = $direct_checkout_continue_enabled ? '' : ' target="_blank"';
+				
+				if( $direct_checkout_continue_enabled ){
+					$html_button = '<a href="'.$additional_button_url.'" title="'.$single_product_title.'" class="button alt"'.$target_blank.'>'.$additional_button_text.'</a>';
+					echo $html_button;
+				}	
 			}
 			
 			/**
@@ -156,6 +187,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 					check_admin_referer( $this->textdomain );
 	
 					$this->saved_options_direct_checkout['direct_checkout_enabled'] = ! isset( $_POST['direct_checkout_enabled'] ) ? '1' : $_POST['direct_checkout_enabled'];
+					$this->saved_options_direct_checkout['direct_checkout_continue_enabled'] = ! isset( $_POST['direct_checkout_continue_enabled'] ) ? '1' : $_POST['direct_checkout_continue_enabled'];
 					$this->saved_options_direct_checkout['direct_checkout_cart_button_text'] = ! isset( $_POST['direct_checkout_cart_button_text'] ) ? 'Add to cart' : $_POST['direct_checkout_cart_button_text'];
 					$this->saved_options_direct_checkout['direct_checkout_exclude_external'] = ! isset( $_POST['direct_checkout_exclude_external'] ) ? '1' : $_POST['direct_checkout_exclude_external'];
 					$this->saved_options_direct_checkout['direct_checkout_cart_redirect_url'] = ! isset( $_POST['direct_checkout_cart_redirect_url'] ) ? '' : $_POST['direct_checkout_cart_redirect_url'];
@@ -173,17 +205,23 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 				}
 			
 				$direct_checkout_enabled			= get_option( 'direct_checkout_enabled' );
+				$direct_checkout_continue_enabled		= get_option( 'direct_checkout_continue_enabled' );
 				$direct_checkout_cart_button_text	= get_option( 'direct_checkout_cart_button_text' ) ? get_option( 'direct_checkout_cart_button_text' ) : 'Add to Cart';
 				$direct_checkout_exclude_external	= get_option( 'direct_checkout_exclude_external' );
 				$direct_checkout_cart_redirect_url	= get_option( 'direct_checkout_cart_redirect_url' );
 				
 				$checked_enabled = '';
+				$checked_enabled_exclude  = '';
+				$checked_continue_enabled = '';
 			
 				if($direct_checkout_enabled)
 					$checked_enabled = 'checked="checked"';
 				
 				if($direct_checkout_exclude_external)
 					$checked_enabled_exclude = 'checked="checked"';
+
+				if($direct_checkout_continue_enabled)
+					$checked_continue_enabled = 'checked="checked"';
 			
 				$actionurl = $_SERVER['REQUEST_URI'];
 				$nonce = wp_create_nonce( $this->textdomain );
@@ -209,14 +247,21 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 										<td colspan="2">
 											<table class="widefat fixed" cellspacing="2" cellpadding="5" border="0">
 												<tr>
-													<td width="25%"><?php _e( 'Enable', $this->textdomain ); ?></td>
+													<td width="30%"><?php _e( 'Enable', $this->textdomain ); ?></td>
 													<td>
 														<input class="checkbox" name="direct_checkout_enabled" id="direct_checkout_enabled" value="0" type="hidden">
-														<input class="checkbox" name="direct_checkout_enabled" id="direct_checkout_enabled" value="1" type="checkbox" <?php echo $checked_enabled; ?> type="checkbox">
+														<input class="checkbox" name="direct_checkout_enabled" id="direct_checkout_enabled" value="1" type="checkbox" <?php echo $checked_enabled; ?>>
 													</td>
 												</tr>
 												<tr>
-													<td width="25%"><?php _e( 'Custom Add to Cart Text', $this->textdomain ); ?></td>
+													<td width="30%"><?php _e( 'Add Continue Shopping Button', $this->textdomain ); ?></td>
+													<td>
+														<input class="checkbox" name="direct_checkout_continue_enabled" id="direct_checkout_continue_enabled" value="0" type="hidden">
+														<input class="checkbox" name="direct_checkout_continue_enabled" id="direct_checkout_continue_enabled" value="1" type="checkbox" <?php echo $checked_continue_enabled; ?>>
+													</td>
+												</tr>
+												<tr>
+													<td width="30%"><?php _e( 'Custom Add to Cart Text', $this->textdomain ); ?></td>
 													<td>
 														<input name="direct_checkout_cart_button_text" id="direct_checkout_cart_button_text" value="<?php echo $direct_checkout_cart_button_text; ?>" />
 														<input class="checkbox" name="direct_checkout_exclude_external" id="direct_checkout_exclude_external" value="0" type="hidden">
@@ -224,7 +269,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 													</td>
 												</tr>
 												<tr>
-													<td width="25%"><?php _e( 'Redirect to Page', $this->textdomain ); ?><br /><span style="color:#ccc;"><?php _e( '(Default will be checkout page if not set)', $this->textdomain ); ?></span></td>
+													<td width="30%"><?php _e( 'Redirect to Page', $this->textdomain ); ?><br /><span style="color:#ccc;"><?php _e( '(Default will be checkout page if not set)', $this->textdomain ); ?></span></td>
 													<td>
 														<select name="direct_checkout_cart_redirect_url">
 														<option value=""><?php echo esc_attr( __( 'Select page' ) ); ?></option> 
