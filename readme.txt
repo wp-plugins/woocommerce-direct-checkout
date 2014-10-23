@@ -5,9 +5,9 @@ Plugin Name: WooCommerce Custom Direct Checkout
 Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
-Tested up to: 3.9.1
-Stable tag: 1.0.8
-Version: 1.0.8
+Tested up to: 4.0
+Stable tag: 1.0.9
+Version: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ A WooCommerce plugin that aims to simplify the checkout process, leading to an i
 In WooCommerce Settings Panel, there will be a new submenu link called 'Direct Checkout' where you can:
 
 *   Enabled / Disabled the direct checkout option
-*   Add "Continue Shoppinf" button to product page
+*   Add "Continue Shopping" button to product page
 *   Change "Add to cart" to any text (Option to exclude external product)
 *   Update "Redirect to Page" option
 
@@ -34,9 +34,13 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 *   Please uncheck the option "Enable AJAX add to cart buttons on archives" at WooCommerce > Settings > Catalog to make the rediection working without ajax.
 
 = GET PRO VERSION =
-http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/
+[WooCommerce Direct Checkout PRO](http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/)
 
-= Additional Plugins by Terry Tsang =
+*   Added Additional Button Options (beside Add to Cart button)
+*   Per Product Basis Settings
+*   more features…
+
+= Popular Plugins by Terry Tsang =
 *   [Custom Checkout Options] (http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/)
 *   [Social Buttons PRO] (http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/)
 *   [Extra Fee Options PRO] (http://terrytsang.com/shop/shop/woocommerce-extra-fee-option-pro/)

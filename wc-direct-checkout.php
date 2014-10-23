@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce Direct Checkout
 Plugin URI: http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Description: Allow you to implement direct checkout (skip cart page) for WooCommerce
-Version: 1.0.8
+Version: 1.0.9
 Author: Terry Tsang
 Author URI: http://shop.terrytsang.com
 */
@@ -29,7 +29,7 @@ Author URI: http://shop.terrytsang.com
 define('wc_plugin_name_direct_checkout', 'WooCommerce Direct Checkout');
 
 // Define plugin version
-define('wc_version_direct_checkout', '1.0.8');
+define('wc_version_direct_checkout', '1.0.9');
 
 
 // Checks if the WooCommerce plugins is installed and active.
@@ -245,7 +245,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 								<tbody>
 									<tr>
 										<td colspan="2">
-											<table class="widefat fixed" cellspacing="2" cellpadding="5" border="0">
+											<table class="widefat auto" cellspacing="2" cellpadding="5" border="0">
 												<tr>
 													<td width="30%"><?php _e( 'Enable', $this->textdomain ); ?></td>
 													<td>
