@@ -5,9 +5,9 @@ Plugin Name: WooCommerce Custom Direct Checkout
 Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
-Tested up to: 4.0
-Stable tag: 1.0.9
-Version: 1.0.9
+Tested up to: 4.1
+Stable tag: 1.0.10
+Version: 1.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,14 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 
 == Changelog ==
 
+= 1.0.10 =
+
+* Removed WooCommerce installation checking
+
+= 1.0.9 =
+
+* Fixed narrow form layout bugs
+ 
 = 1.0.8 =
 
 * Add Continue Shopping button at product page
