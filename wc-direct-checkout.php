@@ -3,12 +3,12 @@
 Plugin Name: WooCommerce Direct Checkout
 Plugin URI: http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Description: Allow you to implement direct checkout (skip cart page) for WooCommerce
-Version: 1.0.10
+Version: 1.1.0
 Author: Terry Tsang
 Author URI: http://shop.terrytsang.com
 */
 
-/*  Copyright 2012-2014 Terry Tsang (email: terrytsang811@gmail.com)
+/*  Copyright 2012-2015 Terry Tsang (email: terrytsang811@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ Author URI: http://shop.terrytsang.com
 define('wc_plugin_name_direct_checkout', 'WooCommerce Direct Checkout');
 
 // Define plugin version
-define('wc_version_direct_checkout', '1.0.10');
+define('wc_version_direct_checkout', '1.1.0');
 
 
 
@@ -128,7 +128,7 @@ if(!class_exists('WooCommerce_Direct_Checkout')){
 			$target_blank = $direct_checkout_continue_enabled ? '' : ' target="_blank"';
 			
 			if( $direct_checkout_continue_enabled ){
-				$html_button = '<a href="'.$additional_button_url.'" title="'.$single_product_title.'" class="button alt"'.$target_blank.'>'.$additional_button_text.'</a>';
+				$html_button = '<a href="'.$additional_button_url.'" title="'.$single_product_title.'" style="margin:5px 0" class="button alt"'.$target_blank.'>'.$additional_button_text.'</a>';
 				echo $html_button;
 			}	
 		}
@@ -325,14 +325,14 @@ if(!class_exists('WooCommerce_Direct_Checkout')){
 					$get_pro_image = WooCommerce_Direct_Checkout::$plugin_url . '/images/direct-checkout-pro-version.png';
 				?>
 				<div align="center"><a href="http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/" target="_blank" title="WooCommerce Direct Checkout PRO"><img src="<?php echo $get_pro_image; ?>" border="0" /></a></div>
-				
+				<div aling="center"><i>PRO version additional features: Individual product override settings and additional button option.</i></div>
 				<h3>Get More Plugins</h3>
 			
 				<p><a href="http://shop.terrytsang.com" target="_blank" title="Premium &amp; Free Extensions/Plugins for E-Commerce by Terry Tsang">Go to My Site</a> to get more free and premium extensions/plugins for your ecommerce sites.</p>
 			
 				<h3>Spreading the Word</h3>
 
-				<ul style="list-style:dash">If you find this plugin helpful, you can:	
+				<ul style="list-style:none">If you find this plugin helpful, you can:	
 					<li>- Write and review about it in your blog</li>
 					<li>- Rate it on <a href="http://wordpress.org/extend/plugins/woocommerce-direct-checkout/" target="_blank">wordpress plugin page</a></li>
 					<li>- Share on your social media<br />
