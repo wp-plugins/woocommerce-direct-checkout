@@ -6,8 +6,8 @@ Plugin URI:  http://terrytsang.com/shop/shop/woocommerce-direct-checkout/
 Tags: woocommerce, custom fields, direct, checkout, e-commerce
 Requires at least: 2.7
 Tested up to: 4.1.1
-Stable tag: 1.1.1
-Version: 1.1.1
+Stable tag: 1.1.2
+Version: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,18 +34,23 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 *   Please uncheck the option "Enable AJAX add to cart buttons on archives" at WooCommerce > Settings > Catalog to make the rediection working without ajax.
 
 = GET PRO VERSION =
-[WooCommerce Direct Checkout PRO](http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/)
+*   [WooCommerce Direct Checkout PRO](http://terrytsang.com/shop/shop/woocommerce-direct-checkout-pro/) - Added Per Product Setings and Additional Button. 
 
-*   Added Additional Button Options (beside Add to Cart button)
-*   Per Product Basis Settings
-*   more features…
+= In addition to these features, over 20 WooCommerce extensions are available: =
 
-= Popular Plugins by Terry Tsang =
-*   [Custom Checkout Options] (http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/)
-*   [Social Buttons PRO] (http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/)
-*   [Extra Fee Options PRO] (http://terrytsang.com/shop/shop/woocommerce-extra-fee-option-pro/)
+* [Custom Checkout Options](http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/) - implement customization for entire checkout process.
+* [Social Buttons PRO](http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/) - additional 9 social share buttons where you can engage more audience.
+* [Extra Fee Option](http://terrytsang.com/shop/shop/woocommerce-extra-fee-option/) - add multiple extra fee for any order with multiple options.
+* [Custom Product Tabs](http://terrytsang.com/shop/shop/woocommerce-custom-product-tabs/) - add multiple tabs to WooCommerce product page.
+* [Facebook Social Plugins](http://terrytsang.com/shop/shop/woocommerce-facebook-social-plugins/) - implement Facebook Social Plugins that let the users liked, commented or shared your site's contents.
+* [Custom Payment Method](http://terrytsang.com/shop/shop/woocommerce-custom-payment-method/) - customise the custom payment method with flexible options.
+* [Custom Shipping Method](http://terrytsang.com/shop/shop/woocommerce-custom-shipping-method/) - define own settings for custom shipping method.
+* [Donation/Tip Checkout](http://terrytsang.com/shop/shop/woocommerce-donation-tip-checkout/) - add donation/tip amount option for their customers at WooCommerce checkout page.
+* [Product Badge](http://terrytsang.com/shop/shop/woocommerce-product-badge/) - add mulitple badges to the products.
+* [Facebook Connect Checkout](http://terrytsang.com/shop/shop/woocommerce-facebook-login-checkout/) - implement Facebook Login so that new customers can sign in woocommerce site by using their Facebook account.
+* [Product Catalog](http://terrytsang.com/shop/shop/woocommerce-product-catalog/) - turn WooCommerce into a product catalog with a few clicks.
 
-
+and many more...
 == Installation ==
 
 1. Upload the entire *woocommerce-direct-checkout* folder to the */wp-content/plugins/* directory
