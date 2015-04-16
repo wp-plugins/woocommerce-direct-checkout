@@ -38,9 +38,10 @@ In WooCommerce Settings Panel, there will be a new submenu link called 'Direct C
 
 = In addition to these features, over 20 WooCommerce extensions are available: =
 
+* [Facebook Share Like Button](http://terrytsang.com/shop/shop/woocommerce-facebook-share-like-button/) - add Facebook Share and Like button at product page.
 * [Custom Checkout Options](http://terrytsang.com/shop/shop/woocommerce-custom-checkout-options/) - implement customization for entire checkout process.
 * [Social Buttons PRO](http://terrytsang.com/shop/shop/woocommerce-social-buttons-pro/) - additional 9 social share buttons where you can engage more audience.
-* [Extra Fee Option](http://terrytsang.com/shop/shop/woocommerce-extra-fee-option/) - add multiple extra fee for any order with multiple options.
+* [Extra Fee Option PRO](http://terrytsang.com/shop/shop/woocommerce-extra-fee-option-pro/) - add multiple extra fee for any order with multiple options.
 * [Custom Product Tabs](http://terrytsang.com/shop/shop/woocommerce-custom-product-tabs/) - add multiple tabs to WooCommerce product page.
 * [Facebook Social Plugins](http://terrytsang.com/shop/shop/woocommerce-facebook-social-plugins/) - implement Facebook Social Plugins that let the users liked, commented or shared your site's contents.
 * [Custom Payment Method](http://terrytsang.com/shop/shop/woocommerce-custom-payment-method/) - customise the custom payment method with flexible options.
