@@ -48,3 +48,28 @@ msgstr "Vlastní text pro Přidat do košíku"
 #@ wc-direct-checkout
 msgid "Save Options"
 msgstr "Uložit"
+
+#: wc-direct-checkout.php:125
+#@ wc-direct-checkout
+msgid "Continue Shopping"
+msgstr "Pokračovat v nákupu"
+
+#: wc-direct-checkout.php:257
+#@ wc-direct-checkout
+msgid "Add Continue Shopping Button"
+msgstr "Přidat tlačítko Pokračovat v nákupu"
+
+#: wc-direct-checkout.php:272
+#@ wc-direct-checkout
+msgid "Redirect to Page"
+msgstr "Přesměrování na stránku"
+
+#: wc-direct-checkout.php:272
+#@ wc-direct-checkout
+msgid "(Default will be checkout page if not set)"
+msgstr "(Použije stránku Pokladna pokud není vyplněno)"
+
+#: wc-direct-checkout.php:275
+#@ default
+msgid "Select page"
+msgstr "Vyber stránku"
